@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Bookmarked Jobs</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h1>Saved Jobs</h1>
+<div id="jobs"></div>
+
+<script>
+fetch("/bookmarks")
+.then(res => res.json())
+.then(data => {
+  document.getElementById("jobs").innerHTML =
+    data.map(j => `<div class="card">${j.title} - ${j.company}</div>`).join("");
+});
+</script>
+
+</body>
+</html>

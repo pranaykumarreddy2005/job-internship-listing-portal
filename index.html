@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Job Portal</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<h1>Job & Internship Portal</h1>
+
+<!-- 🔍 Job Search -->
+<input type="text" id="search" placeholder="Search jobs">
+<button onclick="searchJobs()">Search</button>
+
+<div id="jobs"></div>
+
+<hr>
+
+<!-- 📄 APPLY FORM -->
+<h2>Apply for Job</h2>
+
+<form id="applyForm" enctype="multipart/form-data">
+
+  <input type="number" name="job_id" placeholder="Job ID" required><br><br>
+
+  <input type="text" name="name" placeholder="Full Name" required><br><br>
+  <input type="email" name="email" placeholder="Email" required><br><br>
+  <input type="text" name="phone" placeholder="Phone" required><br><br>
+
+  <input type="text" name="college" placeholder="College"><br><br>
+  <input type="text" name="gpa" placeholder="GPA"><br><br>
+
+  <input type="text" name="skills" placeholder="Skills"><br><br>
+
+  <!-- ROLE -->
+  <select name="role" id="role" onchange="showFields()" required>
+    <option value="">Select Role</option>
+    <option value="Web Developer">Web Developer</option>
+    <option value="Data Analyst">Data Analyst</option>
+    <option value="Cloud Engineer">Cloud Engineer</option>
+  </select><br><br>
+
+  <!-- WEB DEV -->
+  <div id="web" style="display:none;">
+    <input name="frameworks" placeholder="React, Angular, Vue"><br><br>
+  </div>
+
+  <!-- DATA -->
+  <div id="data" style="display:none;">
+    <input name="tools" placeholder="Excel, Power BI, Tableau"><br><br>
+  </div>
+
+  <!-- CLOUD -->
+  <div id="cloud" style="display:none;">
+    <input name="cloud_platform" placeholder="AWS / Azure / GCP"><br><br>
+  </div>
+
+  <input name="certifications" placeholder="Certifications"><br><br>
+
+  <textarea name="experience" placeholder="Experience"></textarea><br><br>
+
+  <input type="file" name="resume" required><br><br>
+
+  <button type="submit">Apply</button>
+</form>
+
+<script src="script.js"></script>
+
+</body>
+</html>

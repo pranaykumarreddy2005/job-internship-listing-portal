@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Apply Job</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+  <h2>Job / Internship Application</h2>
+
+  <form id="applyForm" enctype="multipart/form-data">
+    <input type="hidden" name="job_id" value="1">
+
+    <input type="text" name="name" placeholder="Full Name" required>
+    <input type="email" name="email" placeholder="Email" required>
+    <input type="text" name="phone" placeholder="Phone" required>
+
+    <select name="type" id="type" required>
+      <option value="">Select Type</option>
+      <option value="intern">Internship</option>
+      <option value="job">Job</option>
+    </select>
+
+    <input type="text" name="college" placeholder="College Name" required>
+    <input type="text" name="gpa" placeholder="GPA (e.g. 8.5)">
+    <input type="text" name="skills" placeholder="Skills (HTML, CSS, JS)">
+
+    <div id="experienceBox" style="display:none;">
+      <input type="text" name="experience" placeholder="Experience (e.g. 2 years)">
+    </div>
+
+    <input type="file" name="resume" required>
+
+    <textarea name="cover_letter" placeholder="Cover Letter"></textarea>
+
+    <button type="submit">Submit</button>
+  </form>
+</div>
+
+<script>
+document.getElementById("type").addEventListener("change", function () {
+  document.getElementById("experienceBox").style.display =
+    this.value === "job" ? "block" : "none";
+});
+
+document.getElementById("applyForm").addEventListener("submit", function(e) {
+  e.preventDefault();
+  fetch("/apply", {
+    method: "POST",
+    body: new FormData(this)
+  })
+  .then(res => res.json())
+  .then(data => alert(data.message));
+});
+</script>
+
+</body>
+</html>
